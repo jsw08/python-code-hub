@@ -3,7 +3,6 @@ import os
 def dir():
     while True:
         directories = []
-        directories.append()
         folders = []
         dir_programs = os.listdir("./lib/" + program_to_run)
         print("What program in directory ./lib/" + program_to_run + " do you want to run?")
