@@ -2,12 +2,12 @@ import os
 
 def dir():
     while True:
-        directories = []
         folders = []
-        dir_programs = os.listdir("./lib/" + program_to_run)
-        print("What program in directory ./lib/" + program_to_run + " do you want to run?")
+        print("/".join(directory))
+        dir_programs = os.listdir("./lib/" + "/".join(directory))
+        print("What program in directory ./lib/" + "/".join(directory) + " do you want to run?")
         for dir_program in dir_programs:
-            if os.path.isdir("./lib/" + program_to_run + "/" + dir_program) == True:
+            if os.path.isdir("./lib/" + "/".join(directory) + "/" + dir_program) == True:
                 print("(dir) " + dir_program)
                 folders.append(dir_program)
             if dir_program in folders:
@@ -22,6 +22,7 @@ def dir():
             
         elif new_program_to_run in folders:
             dir_programs = os.listdir("./lib/" + program_to_run + "/" + new_program_to_run)
+            directory.append(new_program_to_run)
             dir()
 
         else:
@@ -52,11 +53,13 @@ def launcher():
     
         elif program_to_run in folders:
             dir_programs = os.listdir("./lib/" + program_to_run)
+            directory.append(program_to_run)
             dir()
             
         else:
             print("Running program.")
             os.system("python ./lib/" + program_to_run)
             break
-
+            
+directory = []
 launcher()
